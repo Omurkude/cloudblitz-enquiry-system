@@ -83,6 +83,23 @@ export const api = {
   deleteEnquiry: (id) => apiRequest(`/enquiries/${id}`, { method: "DELETE" }),
 
   getAssignees: () => apiRequest("/enquiries/assignees", { method: "GET" }),
+
+  // User Management APIs (Admin Only)
+  getUsers: () => apiRequest("/users", { method: "GET" }),
+
+  createUser: (userData) =>
+    apiRequest("/users", {
+      method: "POST",
+      body: JSON.stringify(userData),
+    }),
+
+  updateUser: (id, userData) =>
+    apiRequest(`/users/${id}`, {
+      method: "PUT",
+      body: JSON.stringify(userData),
+    }),
+
+  deleteUser: (id) => apiRequest(`/users/${id}`, { method: "DELETE" }),
 };
 
 export default api;
