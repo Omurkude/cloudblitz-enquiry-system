@@ -17,10 +17,14 @@ function AppRoutes() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
 
-          {/* Protected Routes */}
+          {/* Authenticated Protected Routes */}
           <Route element={<ProtectedRoute />}>
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/enquiries" element={<Enquiries />} />
+          </Route>
+
+          {/* Admin-Only Protected Routes */}
+          <Route element={<ProtectedRoute adminOnly={true} />}>
             <Route path="/users" element={<Users />} />
           </Route>
 
