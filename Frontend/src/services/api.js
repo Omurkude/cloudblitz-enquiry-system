@@ -35,6 +35,7 @@ export const apiRequest = async (endpoint, options = {}) => {
 };
 
 export const api = {
+  // Auth APIs
   register: (userData) =>
     apiRequest("/auth/register", {
       method: "POST",
@@ -51,6 +52,37 @@ export const api = {
     apiRequest("/auth/me", {
       method: "GET",
     }),
+
+  // Enquiry APIs
+  getEnquiries: ({ status, search, assignedTo } = {}) => {
+    const params = new URLSearchParams();
+    if (status && status !== "All") params.append("status", status);
+    if (search && search.trim()) params.append("search", search.trim());
+    if (assignedTo) params.append("assignedTo", assignedTo);
+
+    const queryString = params.toString();
+    const endpoint = `/enquiries${queryString ? `?${queryString}` : ""}`;
+
+    return apiRequest(endpoint, { method: "GET" });
+  },
+
+  getEnquiry: (id) => apiRequest(`/enquiries/${id}`, { method: "GET" }),
+
+  createEnquiry: (enquiryData) =>
+    apiRequest("/enquiries", {
+      method: "POST",
+      body: JSON.stringify(enquiryData),
+    }),
+
+  updateEnquiry: (id, enquiryData) =>
+    apiRequest(`/enquiries/${id}`, {
+      method: "PUT",
+      body: JSON.stringify(enquiryData),
+    }),
+
+  deleteEnquiry: (id) => apiRequest(`/enquiries/${id}`, { method: "DELETE" }),
+
+  getAssignees: () => apiRequest("/enquiries/assignees", { method: "GET" }),
 };
 
 export default api;
