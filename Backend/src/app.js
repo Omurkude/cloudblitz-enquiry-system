@@ -1,5 +1,7 @@
 import express from "express";
 import cors from "cors";
+import authRoutes from "./routes/authRoutes.js";
+import errorHandler from "./middlewares/errorHandler.js";
 
 const app = express();
 
@@ -12,5 +14,12 @@ app.get("/api/health", (req, res) => {
     message: "Server is running",
   });
 });
+
+// Routes
+app.use("/auth", authRoutes);
+app.use("/api/auth", authRoutes);
+
+// Global Error Handler
+app.use(errorHandler);
 
 export default app;
