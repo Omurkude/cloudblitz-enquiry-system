@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import authRoutes from "./routes/authRoutes.js";
+import enquiryRoutes from "./routes/enquiryRoutes.js";
 import errorHandler from "./middlewares/errorHandler.js";
 
 const app = express();
@@ -18,6 +19,8 @@ app.get("/api/health", (req, res) => {
 // Routes
 app.use("/auth", authRoutes);
 app.use("/api/auth", authRoutes);
+app.use("/enquiries", enquiryRoutes);
+app.use("/api/enquiries", enquiryRoutes);
 
 // Global Error Handler
 app.use(errorHandler);
