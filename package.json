@@ -1,0 +1,29 @@
+{
+  "name": "cloudblitz_enquiry_system",
+  "version": "1.0.0",
+  "description": "A full-stack Enquiry Management System built using React, Node.js, Express and MongoDB.",
+  "private": true,
+  "scripts": {
+    "prepare": "husky"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Omurkude/cloudblitz-enquiry-system.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Omurkude/cloudblitz-enquiry-system/issues"
+  },
+  "homepage": "https://github.com/Omurkude/cloudblitz-enquiry-system#readme",
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^16.4.0",
+    "prettier": "^3.9.6"
+  },
+  "lint-staged": {
+    "Frontend/**/*.{js,jsx}": "prettier --write",
+    "Backend/**/*.js": "prettier --write"
+  }
+}
